@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@android:id/background"
+    >
+    <clip>
+        <shape>
+            <corners android:radius="5dip" />
+            <!--<solid android:color="@color/white"></solid>-->
+
+            <gradient
+                android:endColor="@color/white"
+                android:startColor="@color/white"
+                android:centerY="0.75"
+                android:angle="270"/>
+        </shape>
+
+    </clip>
+</item>
+<item
+    android:id="@android:id/secondaryProgress"
+    >
+    <clip>
+        <shape>
+            <corners android:radius="5dip" />
+            <gradient
+                android:endColor="@color/red_normal"
+                android:startColor="@color/red_normal"
+                android:centerY="0.75"
+                android:angle="270"/>
+        </shape>
+
+    </clip>
+</item>
+<item
+    android:id="@android:id/progress"
+    >
+    <clip>
+        <shape>
+            <corners android:radius="5dip" />
+            <!--<solid android:color="@color/purple_pressed"></solid>-->
+            <gradient
+                android:endColor="@color/purple_pressed"
+                android:startColor="@color/purple_pressed"
+                android:centerY="0.75"
+                android:angle="270"/>
+        </shape>
+
+    </clip>
+</item>
+</layer-list>
+
+<!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >-->
+
+    <!--&lt;!&ndash; background &ndash;&gt;-->
+    <!--<item-->
+        <!--android:id="@android:id/background"-->
+        <!--android:drawable="@drawable/progress_patch_green">-->
+    <!--</item>-->
+    <!--&lt;!&ndash; progress &ndash;&gt;-->
+    <!--<item android:id="@android:id/progress">-->
+        <!--<clip>-->
+            <!--<nine-patch android:src="@drawable/progress_patch_galy" />-->
+        <!--</clip>-->
+    <!--</item>-->
+    <!--&lt;!&ndash; second progress &ndash;&gt;-->
+
+    <!--<item android:id="@android:id/secondaryProgress">-->
+        <!--<clip>-->
+            <!--<nine-patch android:src="@drawable/progresspatch_blue" />-->
+        <!--</clip>-->
+    <!--</item>-->
+
+<!--</layer-list>-->
+

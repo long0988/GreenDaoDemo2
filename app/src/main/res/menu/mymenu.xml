@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/actionToggleValues"
+        android:title="是否显示数值" />
+    <item
+        android:id="@+id/actionToggleIcons"
+        android:title="是否显示图标" />
+    <item
+        android:id="@+id/actionToggleFilled"
+        android:title="是否显示区域背景色" />
+    <item
+        android:id="@+id/actionToggleCircles"
+        android:title="是否显示各值的圆点" />
+    <item
+        android:id="@+id/actionToggleCubic"
+        android:title="是否显示立方体" />
+    <item
+        android:id="@+id/actionToggleStepped"
+        android:title="是否显示线条梯形状" />
+    <item
+        android:id="@+id/actionToggleHorizontalCubic"
+        android:title="横向立方体" />
+    <item
+        android:id="@+id/actionToggleHighlight"
+        android:title="显示Marker" />
+    <item
+        android:id="@+id/animateX"
+        android:title="X轴动画" />
+    <item
+        android:id="@+id/animateY"
+        android:title="Y轴动画" />
+    <item
+        android:id="@+id/animateXY"
+        android:title="YX轴动画" />
+</menu>

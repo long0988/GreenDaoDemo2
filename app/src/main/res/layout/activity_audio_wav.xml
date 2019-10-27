@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/timems"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/red_normal"
+            android:text="00:00:00"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp">
+        <TextView
+            android:id="@+id/deleteRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/icon_audiodelete"
+            android:onClick="deleteRecord"
+            android:visibility="gone"
+            android:gravity="center"
+            android:text="删除" />
+        <TextView
+            android:id="@+id/startRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="startRecord"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:drawableTop="@mipmap/icon_audiostart"
+            android:text="录音" />
+
+        <TextView
+            android:id="@+id/pauseRecord"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/icon_audiopause"
+            android:layout_marginLeft="10dp"
+            android:onClick="pauseRecord"
+            android:visibility="gone"
+            android:text="暂停" />
+        <TextView
+            android:id="@+id/reRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/icon_audiostart"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginLeft="10dp"
+            android:onClick="reRecord"
+            android:text="继续" />
+        <TextView
+            android:id="@+id/doneRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="doneRecord"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:visibility="gone"
+            android:drawableTop="@mipmap/icon_audiostop"
+            android:text="完成" />
+
+        <TextView
+            android:id="@+id/palyRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="palyRecord"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:visibility="gone"
+            android:drawableTop="@mipmap/icon_audiostop"
+            android:text="播放" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

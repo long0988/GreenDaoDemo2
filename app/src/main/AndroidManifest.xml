@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.greendaodemo2">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>// 8.0及以上应用安装权限
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>// 6.0及以上悬浮窗权限
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!-- wifi控制和状态权限 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 网络状态改变的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- 6.0以上打开蓝牙和wifi最好加上定位权限，获取wifi列表要用 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--蓝牙-->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!--应用启动设备发现或操作蓝牙设置使用-->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!--蓝牙end-->
+
+    <application
+        android:name=".MyAppLication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="com.activity.MainActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.activity.ContactActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.activity.CityActivity">
+
+        </activity>
+        <activity android:name="com.activity.DateTimePickerActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name="com.activity.CityPickerActivity"/>
+        <activity android:name="com.contact.PickContactActivity"/>
+
+        <activity android:name="com.city.PickCityActivity"/>
+        <activity android:name="com.activity.GreenDaoActivity"/>
+        <activity android:name="com.activity.CityPickerActivity_II"/>
+        <activity android:name="com.activity.WheelViewActivity"/>
+        <activity android:name="com.activity.ScannerActivity"/>
+        <activity android:name="com.activity.ScannerActivity2"/>
+        <activity android:name="com.activity.OeroActivity"/>
+        <activity android:name="com.activity.PictureActivity"/>
+        <activity android:name="com.activity.GeneraRcodeActivity"/>
+        <activity android:name="com.activity.RxGalleryActivity"/>
+        <activity android:name="com.activity.GalleryActivity"/>
+        <activity android:name="com.activity.PickViewCityActivity"/>
+        <activity android:name="com.fragment.FragmentTestActivity"/>
+        <activity android:name="com.activity.SwipeDeleteActiivity"/>
+        <activity android:name="com.swipedeleteactivity.MenuActivity"/>
+        <activity android:name="com.swipedeleteactivity.ListActivity"/>
+        <activity android:name="com.swipedeleteactivity.GridActivity"/>
+        <activity android:name="com.swipedeleteactivity.ViewTypeActivity"/>
+        <activity android:name="com.swipedeleteactivity.VerticalActivity"/>
+        <activity android:name="com.swipedeleteactivity.DefineActivity"/>
+        <activity android:name="com.swipedeleteactivity.MoveActivity"/>
+        <activity android:name="com.swipedeleteactivity.DragSwipeListActivity"/>
+        <activity android:name="com.swipedeleteactivity.DragGridActivity"/>
+        <activity android:name="com.swipedeleteactivity.DragTouchListActivity"/>
+        <activity android:name="com.swipedeleteactivity.RefreshLoadActivity"/>
+        <activity android:name="com.swipedeleteactivity.DefaultActivity"/>
+        <activity android:name="com.swipedeleteactivity.CustomRefreshActivity"/>
+        <activity android:name="com.swipedeleteactivity.CardViewActivity"/>
+        <activity android:name="com.swipedeleteactivity.ViewPagerActivity"/>
+        <activity android:name="com.swipedeleteactivity.DrawerActivity"/>
+        <activity android:name="com.swipedeleteactivity.StickyGroupActivity"/>
+        <activity android:name="com.swipedeleteactivity.LayoutActivity"/>
+        <activity android:name="com.swipedeleteactivity.StickyMenuActivity"/>
+        <activity android:name="com.mpchart.MPChartListActivity"/>
+        <activity android:name="com.mpchart.LineChartActivity1"/>
+        <activity android:name="com.mpchart.LineChartActivity2"/>
+        <activity android:name="com.mpchart.BarChartActivity"/>
+        <activity android:name="com.mpchart.HorizontalBarChartActivity"/>
+        <activity android:name="com.mpchart.CombinedChartActivity"/>
+        <activity android:name="com.mpchart.PieChartActivity"/>
+        <activity android:name="com.mpchart.PiePolylineChartActivity"/>
+        <activity android:name="com.mpchart.ScatterChartActivity"/>
+        <activity android:name="com.mpchart.BubbleChartActivity"/>
+        <activity android:name="com.mpchart.StackedBarActivity"/>
+        <activity android:name="com.mpchart.StackedBarActivityNegative"/>
+        <activity android:name="com.mpchart.AnotherBarActivity"/>
+        <activity android:name="com.mpchart.MultiLineChartActivity"/>
+        <activity android:name="com.mpchart.BarChartActivityMultiDataset"/>
+        <activity android:name="com.mpchart.SimpleChartDemo"/>
+        <activity android:name="com.mpchart.InvertedLineChartActivity"/>
+        <activity android:name="com.mpchart.CandleStickChartActivity"/>
+        <activity android:name="com.mpchart.CubicLineChartActivity"/>
+        <activity android:name="com.mpchart.RadarChartActivity"/>
+        <activity android:name="com.mpchart.LineChartActivityColored"/>
+        <activity android:name="com.mpchart.RealtimeLineChartActivity"/>
+        <activity android:name="com.mpchart.DynamicalAddingActivity"/>
+        <activity android:name="com.mpchart.BarChartActivitySinus"/>
+        <activity android:name="com.mpchart.BarChartPositiveNegative"/>
+        <activity android:name="com.mpchart.LineChartTime"/>
+        <activity android:name="com.mpchart.FilledLineActivity"/>
+        <activity android:name="com.mpchart.HalfPieChartActivity"/>
+        <activity android:name="com.mpchart.MyCustomLineChartActivity"/>
+        <activity android:name="com.activity.PictureSelectorActivity"/>
+        <activity android:name="com.activity.WiFiActivity"/>
+        <activity android:name="com.activity.BlueToothActivity"/>
+        <activity android:name="com.activity.AudioActivity"/>
+        <activity android:name="com.activity.Activity_AudioRecorder"/>
+        <activity android:name="com.activity.AudioWavActivity"/>
+        <activity android:name="com.activity.RandomCodeActivity"/>
+        <activity android:name="com.activity.ProgressBarActivity"/>
+        <activity android:name="com.activity.DouYinActivity"/>
+        <!--RXgallery start-->
+        <activity
+            android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.Test" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait" />
+        <!--RXgallery end-->
+        <!--7.0适配共享配置-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/myfile_paths" tools:replace="android:resource"/>
+        </provider>
+    </application>
+
+</manifest>

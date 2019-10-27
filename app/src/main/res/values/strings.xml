@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">GreenDaoDemo2</string>
+    <string name="hint">请输入关键字</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="button_cancel">取消</string>
+    <string name="button_ok">确定</string>
+    <string name="picker_text_parse">解析数据</string>
+    <string name="picker_text_show">显示省市区选择器</string>
+
+    <string name="picker_custom_lunar">公农历切换</string>
+    <string name="picker_time">时间选择器</string>
+    <string name="picker_province">条件选择器</string>
+
+    <string name="picker_custom_time">时间选择器自定义布局</string>
+    <string name="picker_custom_province">条件选择器自定义布局</string>
+    <string name="picker_custom_parent">自定义父容器</string>
+
+    <string name="picker_non_linkage">条件选择器(不联动)</string>
+
+    <string name="picker_json_parse_sample">省市区Json文件解析示例</string>
+    <string name="picker_json_parse_mycus">我的省市区自定义数据</string>
+    <string name="picker_json_four_level">四级地址选择器</string>
+    <string name="picker_json_four_level2">四级地址选择器2</string>
+    <string name="picker_json_four_level3">popWindow显示</string>
+    <string name="wifi_name">wifi名称</string>
+    <string name="wifi_pwd">wifi密码</string>
+    <string name="wifi_info">wifi信息</string>
+    <string name="wifi_state_disabled">wifi已经关闭</string>
+    <string name="wifi_state_disabling">wifi正在关闭</string>
+    <string name="wifi_state_enabled">wifi已开启</string>
+    <string name="wifi_state_enabling">wifi正在开启</string>
+    <string name="wifi_connected" formatted="false">已连接到wifi:%s</string>
+    <string name="unable_remove">无法删除，请到wifi设置页面，手动删除</string>
+</resources>

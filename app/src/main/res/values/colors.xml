@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--导航栏颜色-->
+    <color name="colorPrimary">#83D5FD</color>
+    <!--通知栏颜色-->
+    <color name="colorPrimaryDark">#83D5FD</color>
+    <!--控件选中颜色 -->
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="widget">#c5c5c5</color>
+    <color name="popmenubg">#212121</color>
+    <color name="popmenutext">#818181</color>
+    <color name="black">#000</color>
+    <color name="gray1">#cccccc</color>
+    <color name="gray">#808080</color>
+    <color name="gray2">#efefef</color>
+    <color name="colorPrimaryDarkTrans">#CCf57257</color>
+    <color name="divider_color">#FFB7B2B2</color>
+    <color name="green_normal">#83D5FD</color>
+    <color name="green_pressed">#30A070</color>
+    <color name="red_normal">#FF0000</color>
+    <color name="red_pressed">#FF6666</color>
+    <color name="purple_normal">#9932CC</color>
+    <color name="purple_pressed">#9F79EE</color>
+    <color name="white_pressed">#FFCFCFCF</color>
+    <color name="recorder_bg">#F4511E</color>
+</resources>

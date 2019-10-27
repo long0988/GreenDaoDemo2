@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/pb_progressbar"
+        style="@style/StyleProgressBarMini"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:max="100"
+        android:progress="50"/>
+
+    <ProgressBar
+        style="@style/pb1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:max="100"
+        android:progress="50"/>
+
+    <ProgressBar
+        style="@style/mProgress_circle"
+        android:layout_gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:indeterminateDuration="1200"
+        android:layout_height="wrap_content" />
+    <ProgressBar
+        style="@style/mProgress_circle2"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateDuration="1200"/>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateDrawable="@drawable/progress_circle_loading"
+        />
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateDuration="1200"
+        android:indeterminateDrawable="@drawable/progress_rotate"/>
+    <LinearLayout
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_gravity="center">
+        <ProgressBar
+            android:layout_margin="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/progress_circle_loading2"
+            android:indeterminateDuration="1200"/>
+    </LinearLayout>
+    <!--<ImageView-->
+        <!--style="@style/mProgress_circle2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:indeterminateDuration="1200"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/progress_circle_loading2" />-->
+</LinearLayout>
