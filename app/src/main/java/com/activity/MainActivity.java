@@ -90,6 +90,8 @@ public class MainActivity extends BaseActivity {
         mClassName.add("自定义条形颜色");
         mListAciivity.add(DouYinActivity.class);
         mClassName.add("仿抖音切換");
+        mListAciivity.add(VideoTypeActivity.class);
+        mClassName.add("视频播放");
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mClassName);
         mListVew.setAdapter(arrayAdapter);
         initMyListener();

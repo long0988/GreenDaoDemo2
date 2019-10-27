@@ -134,6 +134,9 @@
         <activity android:name="com.activity.RandomCodeActivity"/>
         <activity android:name="com.activity.ProgressBarActivity"/>
         <activity android:name="com.activity.DouYinActivity"/>
+        <activity android:name="com.activity.VideoTypeActivity"/>
+        <activity android:name="com.activity.VideoViewActivity"/>
+        <activity android:name="com.activity.SurfaceViewActivity"/>
         <!--RXgallery start-->
         <activity
             android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
