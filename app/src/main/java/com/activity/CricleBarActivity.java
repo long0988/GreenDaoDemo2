@@ -1,13 +1,22 @@
 package com.activity;
 
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.BaseActivity.BaseActivity;
 import com.greendaodemo2.R;
+import com.progress.ArcProgress;
+import com.progress.OnTextCenter;
+import com.progress.onImageCenter;
 import com.utils.LinearGradientUtil;
 import com.widget.CircleBarView;
 import com.widget.CompletedView;
@@ -30,6 +39,7 @@ public class CricleBarActivity extends BaseActivity {
     private CompletedView mTasksView;
     private CircleBarView circlebar,circlebar2;
     private WaveProgressView wave_progress;
+    ArcProgress mProgress,mProgress1,mProgress02,mProgress03;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
@@ -60,7 +70,7 @@ public class CricleBarActivity extends BaseActivity {
         circlebar.setProgressNum(100, 3000);
         //2
         circlebar2.setTextView(textProgress2);
-        circlebar2.setProgressNum(100,5000);
+        circlebar2.setProgressNum(100,3000);
         circlebar2.setOnAnimationListener(new CircleBarView.OnAnimationListener() {
             @Override
             public String howToChangeText(float interpolatedTime, float updateNum, float maxNum) {
@@ -91,6 +101,32 @@ public class CricleBarActivity extends BaseActivity {
         });
         //4进度
         new Thread(new ProgressRunable()).start();
+        //5进度
+        mProgress = (ArcProgress) findViewById(R.id.myProgress);
+        mProgress1 = (ArcProgress) findViewById(R.id.myProgress01);
+        mProgress02 = (ArcProgress) findViewById(R.id.myProgress02);
+        mProgress03 = (ArcProgress) findViewById(R.id.myProgress03);
+
+        mProgress.setOnCenterDraw(new OnTextCenter());
+        mProgress1.setOnCenterDraw(new OnTextCenter());
+        mProgress02.setOnCenterDraw(new ArcProgress.OnCenterDraw() {
+            @Override
+            public void draw(Canvas canvas, RectF rectF, float x, float y, float storkeWidth, int progress) {
+                Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                textPaint.setStrokeWidth(35);
+                textPaint.setColor(getResources().getColor(R.color.textColor));
+                textPaint.setTextSize(68);
+                String progressStr = String.valueOf(progress+"%");
+                float textX = x-(textPaint.measureText(progressStr)/2);
+                float textY = y-((textPaint.descent()+textPaint.ascent())/2);
+                canvas.drawText(progressStr,textX,textY,textPaint);
+            }
+        });
+        mProgress03.setOnCenterDraw(new onImageCenter(this,R.mipmap.ic_launcher));
+        addProrgress(mProgress);
+        addProrgress(mProgress1);
+        addProrgress(mProgress02);
+        addProrgress(mProgress03);
     }
 
     class ProgressRunable implements Runnable {
@@ -105,6 +141,41 @@ public class CricleBarActivity extends BaseActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        }
+    }
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            ArcProgress progressBar = (ArcProgress) msg.obj;
+            progressBar.setProgress(msg.what);
+        }
+    };
+
+    public void addProrgress(ArcProgress progressBar) {
+        Thread thread = new Thread(new ProgressThread(progressBar));
+        thread.start();
+    }
+
+    class ProgressThread implements Runnable{
+        int i= 0;
+        private ArcProgress progressBar;
+        public ProgressThread(ArcProgress progressBar) {
+            this.progressBar = progressBar;
+        }
+        @Override
+        public void run() {
+            for(;i<=100;i++){
+                if(isFinishing()){
+                    break;
+                }
+                Message msg = new Message();
+                msg.what = i;
+                Log.e("DEMO","i == "+i);
+                msg.obj = progressBar;
+                SystemClock.sleep(100);
+                handler.sendMessage(msg);
             }
         }
     }

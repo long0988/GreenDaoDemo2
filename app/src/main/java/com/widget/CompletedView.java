@@ -65,7 +65,7 @@ public class CompletedView extends View {
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray typeArray = context.getTheme().obtainStyledAttributes(attrs,
                 R.styleable.TasksCompletedView, 0, 0);
-        mRadius = typeArray.getDimension(R.styleable.TasksCompletedView_radius, 80);
+        mRadius = typeArray.getDimension(R.styleable.TasksCompletedView_myradius, 80);
         mStrokeWidth = typeArray.getDimension(R.styleable.TasksCompletedView_strokeWidth, 10);
         mCircleColor = typeArray.getColor(R.styleable.TasksCompletedView_circleColor, 0xFFFFFFFF);
         mRingColor = typeArray.getColor(R.styleable.TasksCompletedView_ringColor, 0xFFFFFFFF);

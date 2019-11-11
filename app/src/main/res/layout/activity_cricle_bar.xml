@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <com.widget.CompletedView
         android:id="@+id/tasks_view"
         android:layout_width="200dp"
         android:layout_height="200dp"
         app:circleColor="@color/white"
-        app:radius="50dp"
+        app:myradius="50dp"
         app:ringBgColor="@color/colorAccent"
         app:ringColor="@color/recorder_bg"
         app:strokeWidth="10dp"
@@ -82,4 +86,50 @@
             android:textSize="13dp"
             android:textStyle="bold"/>
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.progress.ArcProgress
+            android:id="@+id/myProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:degree="0"
+            app:progressStyle="arc" />
+
+
+        <com.progress.ArcProgress
+            android:id="@+id/myProgress01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/myProgress"
+            app:radius="80dp"
+            app:progressColor="@color/progressColor"
+            app:tickDensity="3" />
+
+        <com.progress.ArcProgress
+            android:id="@+id/myProgress02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/myProgress"
+            app:radius="90dp"
+            app:arcCapRound="true"
+            app:degree="180"
+            app:progressStyle="arc"
+            app:progressColor="@color/progressColorBlue"
+            app:tickDensity="3" />
+
+
+        <com.progress.ArcProgress
+            android:id="@+id/myProgress03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/myProgress"
+            android:layout_below="@id/myProgress02"
+            app:radius="80dp"
+            app:degree="0"
+            app:progressStyle="tick"
+            app:progressColor="@color/progressColorGreen"
+            app:tickDensity="3" />
+    </RelativeLayout>
 </LinearLayout>
+</ScrollView>
