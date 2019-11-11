@@ -92,6 +92,14 @@ public class MainActivity extends BaseActivity {
         mClassName.add("仿抖音切換");
         mListAciivity.add(VideoTypeActivity.class);
         mClassName.add("视频播放");
+        mListAciivity.add(ListViewNestActivity.class);
+        mClassName.add("ListView嵌套滑动问题");
+        mListAciivity.add(RecyclerNestActivity.class);
+        mClassName.add("Recycler嵌套滑动问题");
+        mListAciivity.add(CricleBarActivity.class);
+        mClassName.add("圆形进度条");
+        mListAciivity.add(LinearGradientActivity.class);
+        mClassName.add("风险刻度");
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mClassName);
         mListVew.setAdapter(arrayAdapter);
         initMyListener();

@@ -137,6 +137,10 @@
         <activity android:name="com.activity.VideoTypeActivity"/>
         <activity android:name="com.activity.VideoViewActivity"/>
         <activity android:name="com.activity.SurfaceViewActivity"/>
+        <activity android:name="com.activity.ListViewNestActivity"/>
+        <activity android:name="com.activity.RecyclerNestActivity"/>
+        <activity android:name="com.activity.CricleBarActivity"/>
+        <activity android:name="com.activity.LinearGradientActivity"/>
         <!--RXgallery start-->
         <activity
             android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"

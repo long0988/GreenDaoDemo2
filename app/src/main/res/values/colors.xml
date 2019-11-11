@@ -24,4 +24,7 @@
     <color name="purple_pressed">#9F79EE</color>
     <color name="white_pressed">#FFCFCFCF</color>
     <color name="recorder_bg">#F4511E</color>
+    <color name="light">#800de6e8</color>
+    <color name="start">#FFDADA</color>
+    <color name="end">#FF6867</color>
 </resources>
