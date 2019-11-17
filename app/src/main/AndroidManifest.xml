@@ -141,6 +141,7 @@
         <activity android:name="com.activity.RecyclerNestActivity"/>
         <activity android:name="com.activity.CricleBarActivity"/>
         <activity android:name="com.activity.LinearGradientActivity"/>
+        <activity android:name="com.activity.TabBottomActivity"/>
         <!--RXgallery start-->
         <activity
             android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
