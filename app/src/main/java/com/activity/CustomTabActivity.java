@@ -10,7 +10,7 @@ import com.fragment.TabFragment;
 import com.greendaodemo2.R;
 import com.widget.CustomTabView;
 
-public class TabBottomActivity extends BaseActivity implements CustomTabView.OnTabCheckListener{
+public class CustomTabActivity extends BaseActivity implements CustomTabView.OnTabCheckListener{
     Fragment mFragmensts[] = new Fragment[4];
     private CustomTabView mCustomTabView;
     @Override

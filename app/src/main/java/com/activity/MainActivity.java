@@ -100,7 +100,7 @@ public class MainActivity extends BaseActivity {
         mClassName.add("圆形进度条");
         mListAciivity.add(LinearGradientActivity.class);
         mClassName.add("风险刻度");
-        mListAciivity.add(TabBottomActivity.class);
+        mListAciivity.add(BottomTabsActivity.class);
         mClassName.add("底部Tab");
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mClassName);
         mListVew.setAdapter(arrayAdapter);
