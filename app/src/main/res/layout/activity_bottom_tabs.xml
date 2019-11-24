@@ -14,5 +14,17 @@
         android:onClick="tablayFrag"
         android:textColor="@color/bank_bg01"
         android:text="tablayoutTab"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="bottomNatTAB"
+        android:textColor="@color/bank_bg01"
+        android:text="bottomNatTAB"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="tablayoutVp"
+        android:textColor="@color/bank_bg01"
+        android:text="tablayout+Viewpager"/>
 
 </LinearLayout>

@@ -21,4 +21,12 @@ public class BottomTabsActivity extends BaseActivity {
     public void tablayFrag(View view) {
         startActivity(new Intent(this,TablayoutTabActivity.class));
     }
+
+    public void bottomNatTAB(View view) {
+        startActivity(new Intent(this,BottomNavTabActivity.class));
+    }
+
+    public void tablayoutVp(View view) {
+        startActivity(new Intent(this,TablaayoutVpActivity.class));
+    }
 }

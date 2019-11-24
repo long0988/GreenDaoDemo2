@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.widget.MyViewPager
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bnview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#66000000"
+        app:menu="@menu/bottomnav"
+        app:itemIconTint="@drawable/seleced_menu_color"
+        app:itemTextColor="@drawable/seleced_menu_color"
+
+        />
+
+</LinearLayout>

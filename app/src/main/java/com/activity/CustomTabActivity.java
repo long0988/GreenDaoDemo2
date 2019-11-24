@@ -2,6 +2,8 @@ package com.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 
@@ -64,24 +66,59 @@ public class CustomTabActivity extends BaseActivity implements CustomTabView.OnT
     }
 
     private void onTabItemSelected(int position){
-        Fragment fragment = null;
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        Fragment  fragment1= manager.findFragmentByTag("tab1");
+        Fragment  fragment2= manager.findFragmentByTag("tab2");
+        Fragment  fragment3= manager.findFragmentByTag("tab3");
+        Fragment  fragment4= manager.findFragmentByTag("tab4");
+        if(fragment1!=null){
+            transaction.hide(fragment1);
+        }
+        if(fragment2!=null){
+            transaction.hide(fragment2);
+        }
+        if(fragment3!=null){
+            transaction.hide(fragment3);
+        }
+        if(fragment4!=null){
+            transaction.hide(fragment4);
+        }
         switch (position){
             case 0:
-                fragment = mFragmensts[0];
+                if(fragment1==null){
+                    fragment1 = mFragmensts[0];
+                    transaction.add(R.id.home_container,fragment1,"tab1");
+                }else {
+                    transaction.show(fragment1);
+                }
                 break;
             case 1:
-                fragment = mFragmensts[1];
+                if(fragment2==null){
+                    fragment2 = mFragmensts[1];
+                    transaction.add(R.id.home_container,fragment2,"tab2");
+                }else {
+                    transaction.show(fragment2);
+                }
                 break;
 
             case 2:
-                fragment = mFragmensts[2];
+                if(fragment3==null){
+                    fragment3 = mFragmensts[2];
+                    transaction.add(R.id.home_container,fragment3,"tab3");
+                }else {
+                    transaction.show(fragment3);
+                }
                 break;
             case 3:
-                fragment = mFragmensts[3];
+                if(fragment4==null){
+                    fragment4 = mFragmensts[3];
+                    transaction.add(R.id.home_container,fragment4,"tab4");
+                }else {
+                    transaction.show(fragment4);
+                }
                 break;
         }
-        if(fragment!=null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.home_container,fragment).commit();
-        }
+        transaction.commitAllowingStateLoss();
     }
 }
