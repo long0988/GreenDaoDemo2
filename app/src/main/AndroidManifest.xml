@@ -146,6 +146,7 @@
         <activity android:name="com.activity.TablayoutTabActivity"/>
         <activity android:name="com.activity.BottomNavTabActivity"/>
         <activity android:name="com.activity.TablaayoutVpActivity"/>
+        <activity android:name="com.activity.WhiteBoardActivity"/>
         <!--RXgallery start-->
         <activity
             android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"

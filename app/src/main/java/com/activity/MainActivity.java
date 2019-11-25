@@ -102,6 +102,8 @@ public class MainActivity extends BaseActivity {
         mClassName.add("风险刻度");
         mListAciivity.add(BottomTabsActivity.class);
         mClassName.add("底部Tab");
+        mListAciivity.add(WhiteBoardActivity.class);
+        mClassName.add("白板涂鸦");
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mClassName);
         mListVew.setAdapter(arrayAdapter);
         initMyListener();
