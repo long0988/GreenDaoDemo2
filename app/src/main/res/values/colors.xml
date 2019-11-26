@@ -27,4 +27,8 @@
     <color name="light">#800de6e8</color>
     <color name="start">#FFDADA</color>
     <color name="end">#FF6867</color>
+    <color name="green_pressed2">#6630A070</color>
+    <color name="gray66">#66808080</color>
+    <color name="blue">#7D7DFF</color>
+    <color name="blue2">#667D7DFF</color>
 </resources>
