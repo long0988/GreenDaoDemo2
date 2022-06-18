@@ -1,6 +1,7 @@
 package com.widget;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -9,7 +10,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +27,16 @@ public class MyWhiteBoard extends View {
     private List<DrawPath> savePathList=new ArrayList<>();
     private float paintWidth=10;
     private int mPaontColor=Color.BLACK;
+    private int canvasBG=Color.WHITE;
+    private int[] mColorArr;
+    private int[] mLighterColorArr;
+    private int curIndex = 0;
+    private boolean ifLighter=false;
+    private Paint bitmapPaint;
+    private Bitmap bitmap;
+    private Canvas canvas;
+    private int mWidth;
+    private int mHeight;
 
     public MyWhiteBoard(Context context) {
         this(context,null);
@@ -33,21 +48,48 @@ public class MyWhiteBoard extends View {
 
     public MyWhiteBoard(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        bitmapPaint = new Paint(Paint.DITHER_FLAG);
         initPaint();
     }
+
+//    @Override
+//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+//        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+//        setMeasuredDimension(mWidth, mHeight);
+//    }
+//
+//    @Override
+//    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+//        super.onSizeChanged(w, h, oldw, oldh);
+//        if(bitmap==null){
+//            bitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
+//        }
+//        canvas = new Canvas(bitmap);
+//        canvas.drawColor(Color.TRANSPARENT);
+//    }
 
     private void initPaint() {
         paint = new Paint();
         paint.setAntiAlias(true);
+        paint.setDither(true);
         paint.setStrokeWidth(paintWidth);
         paint.setColor(mPaontColor);
+        if(ifLighter){
+            paint.setAlpha(80);
+        }
+        paint.setStrokeJoin(Paint.Join.ROUND);
+        paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setStyle(Paint.Style.STROKE);
     }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(Color.WHITE);
+//        canvas.drawBitmap(bitmap, 0, 0, bitmapPaint);
+        canvas.drawColor(canvasBG);
         if(drawPathList!=null&&!drawPathList.isEmpty()){
             for(DrawPath drawPath:drawPathList){
                 if(drawPath!=null){
@@ -88,6 +130,32 @@ public class MyWhiteBoard extends View {
         }
         return true;
     }
+    /**
+     * 画布背景色
+     * @param canvasBg
+     */
+    public  void setCanvasBg(int canvasBg){
+        this.canvasBG=canvasBg;
+    }
+
+    /**
+     * 选择颜色集合
+     * @param colorArr
+     */
+    public void setColorArr(int [] colorArr){
+        mPaontColor=colorArr[0];
+        mColorArr=colorArr;
+        initPaint();
+    }
+    /**
+     * 荧光笔的颜色集合,暂时保留
+     */
+    public void setLighterColorArr(int [] colorArr){
+        mLighterColorArr=colorArr;
+    }
+    /**
+     * 撤销
+     */
     public void undo(){
         if(drawPathList!=null&&drawPathList.size()>0){
             savePathList.add(drawPathList.get(drawPathList.size()-1));
@@ -95,6 +163,7 @@ public class MyWhiteBoard extends View {
             invalidate();
         }
     }
+
     /**
      * 反撤销功能
      */
@@ -147,6 +216,107 @@ public class MyWhiteBoard extends View {
         paint.setStrokeWidth(paintWidth);
     }
 
+    /**
+     * 钢笔
+     */
+    public void setPen(){
+        paintWidth=10;
+        ifLighter=false;
+        mPaontColor=mColorArr[curIndex];
+        paint.setColor(mPaontColor);
+        paint.setStrokeWidth(paintWidth);
+    }
+    /**
+     * 荧光笔
+     */
+    public void setHighLighter(){
+        paintWidth=25;
+//        mPaontColor=mLighterColorArr[curIndex];
+//        paint.setColor(mPaontColor);
+        ifLighter=true;
+        setPaintAlpha();
+        paint.setStrokeWidth(paintWidth);
+    }
+    public void setPaintAlpha(){
+        paint.setAlpha(80);
+    }
+    /**
+     * 颜色更换
+     */
+    public void setCurrColor(int index){
+        this.curIndex=index;
+        mPaontColor=mColorArr[index];
+        paint.setColor(mPaontColor);
+        if(ifLighter){
+            setPaintAlpha();
+        }
+    }
+    public Bitmap getBitmap() {
+        bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        doDraw(canvas);
+        return bitmap;
+    }
+    /**
+     * 开始进行绘画
+     *
+     * @param canvas
+     */
+    private void doDraw(Canvas canvas) {
+        canvas.drawColor(canvasBG);
+        if(drawPathList!=null&&!drawPathList.isEmpty()){
+            for(DrawPath drawPath:drawPathList){
+                if(drawPath!=null){
+                    canvas.drawPath(drawPath.path, drawPath.paint);
+                }
+            }
+        }
+        canvas.drawBitmap(bitmap, 0, 0, bitmapPaint);
+    }
+
+    public void loadImage(Bitmap bitmap) {
+        this.bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+        canvas.setBitmap(this.bitmap);
+        bitmap.recycle();
+        invalidate();
+    }
+    public boolean saveImage(String filePath, String filename, Bitmap.CompressFormat format,
+                             int quality) {
+        if (quality > 100) {
+            Toast.makeText(getContext(),"质量不能高于100",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        File file;
+        filename=filename+System.currentTimeMillis();
+        FileOutputStream out = null;
+        try {
+            switch (format) {
+                case PNG:
+                    file = new File(filePath, filename + ".png");
+                    out = new FileOutputStream(file);
+                    return getBitmap().compress(Bitmap.CompressFormat.PNG, quality, out);
+                case JPEG:
+                    file = new File(filePath, filename + ".jpg");
+                    out = new FileOutputStream(file);
+                    return getBitmap().compress(Bitmap.CompressFormat.JPEG, quality, out);
+                default:
+                    file = new File(filePath, filename + ".png");
+                    out = new FileOutputStream(file);
+                    return getBitmap().compress(Bitmap.CompressFormat.PNG, quality, out);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
     class DrawPath {
         Path path;
         Paint paint;

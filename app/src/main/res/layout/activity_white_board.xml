@@ -61,6 +61,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="擦除"/>
+        <Button
+            android:id="@+id/pen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="钢笔"/>
+        <Button
+            android:id="@+id/highlighter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="荧光笔"/>
+        <Button
+            android:id="@+id/loadimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加载图片"
+            android:visibility="gone"/>
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="保存"/>
 
     </LinearLayout>
 

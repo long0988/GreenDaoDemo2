@@ -76,7 +76,7 @@ public class MyAppLication extends Application {
 
     private RefWatcher setupLeakCanary() {
         if (LeakCanary.isInAnalyzerProcess(this)) {
-            return null;
+            return RefWatcher.DISABLED;
         }
         return LeakCanary.install(this);
     }
