@@ -13,6 +13,9 @@ import android.widget.Toast;
 import com.BaseActivity.BaseActivity;
 import com.city.PickCityActivity;
 import com.contact.PickContactActivity;
+import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
 import com.greendaodemo2.MyAppLication;
 import com.greendaodemo2.R;
 import com.hjq.permissions.OnPermission;
@@ -26,14 +29,14 @@ import java.util.List;
 public class MainActivity extends BaseActivity {
 
     private ListView mListVew;
-    private List<Class<? extends Activity>> mListAciivity=new ArrayList<>();
-    private List<String> mClassName=new ArrayList<>();
+    private List<Class<? extends Activity>> mListAciivity = new ArrayList<>();
+    private List<String> mClassName = new ArrayList<>();
 
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
         CustomDensityUtil.setCustomDensity(this, MyAppLication.context);
         setContentView(R.layout.activity_main);
-        mListVew=(ListView)findViewById(R.id.listview);
+        mListVew = (ListView) findViewById(R.id.listview);
         mListAciivity.add(DateTimePickerActivity.class);
         mClassName.add("时钟-日期页");
         mListAciivity.add(CityActivity.class);
@@ -108,6 +111,17 @@ public class MainActivity extends BaseActivity {
         mListVew.setAdapter(arrayAdapter);
         initMyListener();
         initRequestPermissions();
+        boolean valid_cn = isPhoneNumberValid("+8615820799999", "86");
+        System.out.println("isPhoneNumberValid:" + valid_cn);
+
+        boolean valid_hk = isPhoneNumberValid("+85283079901", "852");
+        System.out.println("isPhoneNumberValid:" + valid_hk);
+        boolean valid_My = isPhoneNumberValid("+8613822198145", "86");
+        System.out.println("isPhoneNumberValid:" + valid_My);
+        boolean valid_niriliya = isPhoneNumberValid("+23408180245099", "234");
+        System.out.println("isPhoneNumberValid:" + valid_niriliya);
+        boolean valid_niriliya2 = isPhoneNumberValid("+2348180245098", "234");
+        System.out.println("isPhoneNumberValid:" + valid_niriliya2);
     }
 
     private void initRequestPermissions() {
@@ -116,7 +130,7 @@ public class MainActivity extends BaseActivity {
                 //.permission(Permission.REQUEST_INSTALL_PACKAGES) //支持8.0及以上请求安装权限
                 //.permission(Permission.SYSTEM_ALERT_WINDOW) //支持请求6.0及以上悬浮窗权限
                 //.permission(Permission.Group.STORAGE) //不指定权限则自动获取清单中的危险权限
-                .permission(new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW,Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,Manifest.permission.RECORD_AUDIO})
+                .permission(new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS, Manifest.permission.RECORD_AUDIO})
                 .request(new OnPermission() {
 
                     @Override
@@ -126,7 +140,7 @@ public class MainActivity extends BaseActivity {
 
                     @Override
                     public void noPermission(List<String> denied, boolean quick) {
-                        Toast.makeText(MainActivity.this,"拒绝权限将导致应用部分功能不能使用",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "拒绝权限将导致应用部分功能不能使用", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -135,12 +149,33 @@ public class MainActivity extends BaseActivity {
         mListVew.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(MainActivity.this,mListAciivity.get(position)));
+                startActivity(new Intent(MainActivity.this, mListAciivity.get(position)));
             }
         });
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    /**
+     * 根据区号判断是否是正确的电话号码
+     *
+     * @param phoneNumber :带国家码的电话号码
+     * @param countryCode :默认国家码
+     *                    return ：true 合法  false：不合法
+     */
+    public static boolean isPhoneNumberValid(String phoneNumber, String countryCode) {
+
+        System.out.println("isPhoneNumberValid: " + phoneNumber + "/" + countryCode);
+        PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+        try {
+            Phonenumber.PhoneNumber numberProto = phoneUtil.parse(phoneNumber, countryCode);
+            return phoneUtil.isValidNumber(numberProto);
+        } catch (NumberParseException e) {
+            System.err.println("isPhoneNumberValid NumberParseException was thrown: " + e.toString());
+        }
+        return false;
     }
 }
