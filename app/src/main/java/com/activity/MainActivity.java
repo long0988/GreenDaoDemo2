@@ -110,6 +110,8 @@ public class MainActivity extends BaseActivity {
         mClassName.add("底部Tab");
         mListAciivity.add(WhiteBoardActivity.class);
         mClassName.add("白板涂鸦");
+        mListAciivity.add(MyTablayoutActivity.class);
+        mClassName.add("重新定义样式Tablayout");
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mClassName);
         mListVew.setAdapter(arrayAdapter);
         initMyListener();

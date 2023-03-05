@@ -400,4 +400,13 @@
     <style name="mProgress_circle3">
         <item name="android:indeterminateDrawable">@drawable/progress_circle_loading2</item>
     </style>
+    <style name="MyTabLayout">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="MyTabLayout2">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
 </resources>

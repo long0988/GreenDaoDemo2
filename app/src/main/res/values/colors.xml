@@ -31,4 +31,8 @@
     <color name="gray66">#66808080</color>
     <color name="blue">#7D7DFF</color>
     <color name="blue2">#667D7DFF</color>
+    <color name="progressColor">#CC0033</color>
+    <color name="progressColorBlue">#3366FF</color>
+    <color name="progressColorGreen">#66FF33</color>
+    <color name="textColor">#CC99FF</color>
 </resources>

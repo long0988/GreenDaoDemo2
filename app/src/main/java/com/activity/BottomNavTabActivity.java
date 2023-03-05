@@ -118,7 +118,8 @@ public class BottomNavTabActivity extends BaseActivity {
 
             for (int i = 0; i < menuView.getChildCount(); i++) {
                 BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(i);
-                itemView.setShiftingMode(false);
+//                itemView.setShiftingMode(false);
+                itemView.setShifting(false);
                 itemView.setChecked(itemView.getItemData().isChecked());
             }
 
