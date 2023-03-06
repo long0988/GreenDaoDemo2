@@ -1,135 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-<LinearLayout
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.widget.CompletedView
-        android:id="@+id/tasks_view"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:circleColor="@color/white"
-        app:myradius="50dp"
-        app:ringBgColor="@color/colorAccent"
-        app:ringColor="@color/recorder_bg"
-        app:strokeWidth="10dp"
-        app:isShowText="true"
-        />
-    <RelativeLayout
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp">
-        <com.widget.CircleBarView
-            android:id="@+id/circle_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.widget.CompletedView
+            android:id="@+id/tasks_view"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:circleColor="@color/white"
+            app:isShowText="true"
+            app:myradius="50dp"
+            app:ringBgColor="@color/colorAccent"
+            app:ringColor="@color/recorder_bg"
+            app:strokeWidth="10dp" />
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            app:start_angle="135"
-            app:sweep_angle="270"
-            app:progress_color="@color/recorder_bg"
-            app:bg_color="@color/colorAccent"
-            app:bar_width="8dp"/>
-        <TextView
-            android:id="@+id/text_progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp">
-        <com.widget.CircleBarView
-            android:id="@+id/circle_view2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+
+            <com.widget.CircleBarView
+                android:id="@+id/circle_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                app:bar_width="8dp"
+                app:bg_color="@color/colorAccent"
+                app:progress_color="@color/recorder_bg"
+                app:start_angle="135"
+                app:sweep_angle="270" />
+
+            <TextView
+                android:id="@+id/text_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            app:start_angle="0"
-            app:sweep_angle="360"
-            app:progress_color="@color/green_pressed"
-            app:bg_color="@color/colorAccent"
-            app:bar_width="8dp"/>
-        <TextView
-            android:id="@+id/text_progress2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp">
+
+            <com.widget.CircleBarView
+                android:id="@+id/circle_view2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                app:bar_width="8dp"
+                app:bg_color="@color/colorAccent"
+                app:progress_color="@color/green_pressed"
+                app:start_angle="0"
+                app:sweep_angle="360" />
+
+            <TextView
+                android:id="@+id/text_progress2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp">
+
             <com.widget.WaveProgressView
                 android:id="@+id/wave_progress"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:wave_height="20dp"
-                app:wave_width="20dp"
                 app:second_wave_color="@color/colorPrimary"
+                app:wave_bg_color="@color/colorAccent"
                 app:wave_color="@color/green_pressed"
-                app:wave_bg_color="@color/colorAccent"/>
-        <TextView
-            android:id="@+id/text_progress3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/colorAccent"
-            android:textSize="13dp"
-            android:textStyle="bold"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.progress.ArcProgress
-            android:id="@+id/myProgress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:degree="0"
-            app:progressStyle="arc" />
+                app:wave_height="20dp"
+                app:wave_width="20dp" />
+
+            <TextView
+                android:id="@+id/text_progress3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.progress.ArcProgress
+                android:id="@+id/myProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:degree="0"
+                app:progressStyle="arc" />
 
 
-        <com.progress.ArcProgress
-            android:id="@+id/myProgress01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/myProgress"
-            app:radius="80dp"
-            app:progressColor="@color/progressColor"
-            app:tickDensity="3" />
+            <com.progress.ArcProgress
+                android:id="@+id/myProgress01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/myProgress"
+                app:progressColor="@color/progressColor"
+                app:radius="80dp"
+                app:tickDensity="3" />
 
-        <com.progress.ArcProgress
-            android:id="@+id/myProgress02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/myProgress"
-            app:radius="90dp"
-            app:arcCapRound="true"
-            app:degree="180"
-            app:progressStyle="arc"
-            app:progressColor="@color/progressColorBlue"
-            app:tickDensity="3" />
+            <com.progress.ArcProgress
+                android:id="@+id/myProgress02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/myProgress"
+                app:arcCapRound="true"
+                app:degree="180"
+                app:progressColor="@color/progressColorBlue"
+                app:progressStyle="arc"
+                app:radius="90dp"
+                app:tickDensity="3" />
 
 
-        <com.progress.ArcProgress
-            android:id="@+id/myProgress03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/myProgress"
-            android:layout_below="@id/myProgress02"
-            app:radius="80dp"
-            app:degree="0"
-            app:progressStyle="tick"
-            app:progressColor="@color/progressColorGreen"
-            app:tickDensity="3" />
-    </RelativeLayout>
-</LinearLayout>
+            <com.progress.ArcProgress
+                android:id="@+id/myProgress03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/myProgress02"
+                android:layout_toRightOf="@id/myProgress"
+                app:degree="0"
+                app:progressColor="@color/progressColorGreen"
+                app:progressStyle="tick"
+                app:radius="80dp"
+                app:tickDensity="3" />
+
+            <com.progress.ArcProgress
+                android:id="@+id/myProgress04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/myProgress01"
+                app:arcCapRound="true"
+                app:degree="180"
+                app:progressColor="@color/progressColorBlue"
+                app:progressStyle="gradient"
+                app:radius="90dp"
+                app:tickDensity="3" />
+        </RelativeLayout>
+    </LinearLayout>
 </ScrollView>

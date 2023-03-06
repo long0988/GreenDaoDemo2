@@ -39,7 +39,7 @@ public class CricleBarActivity extends BaseActivity {
     private CompletedView mTasksView;
     private CircleBarView circlebar,circlebar2;
     private WaveProgressView wave_progress;
-    ArcProgress mProgress,mProgress1,mProgress02,mProgress03;
+    ArcProgress mProgress,mProgress1,mProgress02,mProgress03,myProgress04;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
@@ -106,8 +106,9 @@ public class CricleBarActivity extends BaseActivity {
         mProgress1 = (ArcProgress) findViewById(R.id.myProgress01);
         mProgress02 = (ArcProgress) findViewById(R.id.myProgress02);
         mProgress03 = (ArcProgress) findViewById(R.id.myProgress03);
+        myProgress04 = (ArcProgress) findViewById(R.id.myProgress04);
 
-        mProgress.setOnCenterDraw(new OnTextCenter());
+//        mProgress.setOnCenterDraw(new OnTextCenter());
         mProgress1.setOnCenterDraw(new OnTextCenter());
         mProgress02.setOnCenterDraw(new ArcProgress.OnCenterDraw() {
             @Override
@@ -127,6 +128,7 @@ public class CricleBarActivity extends BaseActivity {
         addProrgress(mProgress1);
         addProrgress(mProgress02);
         addProrgress(mProgress03);
+        addProrgress(myProgress04);
     }
 
     class ProgressRunable implements Runnable {

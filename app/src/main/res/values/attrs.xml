@@ -44,6 +44,7 @@
         <attr name="degree" format="integer"></attr>
         <attr name="arcCapRound" format="boolean"></attr>
         <attr name="progressStyle" format="enum">
+            <enum name="gradient" value="2"></enum>
             <enum name="tick" value="1"></enum>
             <enum name="arc" value="0"></enum>
         </attr>
