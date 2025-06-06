@@ -42,6 +42,7 @@ public class MyAppLication extends Application {
         ZXingLibrary.initDisplayOpinion(this);
         initRxGallery();
         initLeakCanary();
+        //Fresco网页调试接口
         Fresco.initialize(this);
         //侧滑删除初始化
         initSwipeBack();

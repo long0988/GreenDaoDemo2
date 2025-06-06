@@ -14,8 +14,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.BaseActivity.BaseActivity;
+import com.adapter.MainActivityRcrAdapter;
+import com.adapter.MyRecyclerAdapter;
 import com.city.PickCityActivity;
 import com.contact.PickContactActivity;
+import com.decoration.mainpage.DividerItemDecoration;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
@@ -26,20 +29,27 @@ import com.hjq.permissions.XXPermissions;
 import com.mpchart.MPChartListActivity;
 import com.utils.CustomDensityUtil;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
     private ListView mListVew;
+    private RecyclerView mRecyclerView;
     private List<Class<? extends Activity>> mListAciivity = new ArrayList<>();
     private List<String> mClassName = new ArrayList<>();
+    private MainActivityRcrAdapter mainAdapter;
 
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
-        CustomDensityUtil.setCustomDensity(this, MyAppLication.context);
+        //CustomDensityUtil.setCustomDensity(this, MyAppLication.context);
         setContentView(R.layout.activity_main);
-        mListVew = (ListView) findViewById(R.id.listview);
+        //mListVew = (ListView) findViewById(R.id.listview);
+        mRecyclerView = (RecyclerView) findViewById(R.id.mRecyclerView);
         mListAciivity.add(DateTimePickerActivity.class);
         mClassName.add("时钟-日期页");
         mListAciivity.add(CityActivity.class);
@@ -112,9 +122,15 @@ public class MainActivity extends BaseActivity {
         mClassName.add("白板涂鸦");
         mListAciivity.add(MyTablayoutActivity.class);
         mClassName.add("重新定义样式Tablayout");
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mClassName);
-        mListVew.setAdapter(arrayAdapter);
+        /*ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mClassName);
+        mListVew.setAdapter(arrayAdapter);*/
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mainAdapter = new MainActivityRcrAdapter(mClassName,this);
+        mRecyclerView.setAdapter(mainAdapter);
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this,1));
         initMyListener();
+        //权限会导致卡顿？把挂载权限去掉
         initRequestPermissions();
         boolean valid_cn = isPhoneNumberValid("+8615820799999", "86");
         System.out.println("isPhoneNumberValid:" + valid_cn);
@@ -135,7 +151,8 @@ public class MainActivity extends BaseActivity {
                 //.permission(Permission.REQUEST_INSTALL_PACKAGES) //支持8.0及以上请求安装权限
                 //.permission(Permission.SYSTEM_ALERT_WINDOW) //支持请求6.0及以上悬浮窗权限
                 //.permission(Permission.Group.STORAGE) //不指定权限则自动获取清单中的危险权限
-                .permission(new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS, Manifest.permission.RECORD_AUDIO})
+//                .permission(new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS, Manifest.permission.RECORD_AUDIO})
+                .permission(new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO})
                 .request(new OnPermission() {
 
                     @Override
@@ -151,9 +168,15 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initMyListener() {
-        mListVew.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*mListVew.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(MainActivity.this, mListAciivity.get(position)));
+            }
+        });*/
+        mainAdapter.setOnItemClickListener(new MainActivityRcrAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
                 startActivity(new Intent(MainActivity.this, mListAciivity.get(position)));
             }
         });
@@ -187,13 +210,13 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
+        switch (requestCode) {
             case 2:
-                if(resultCode == Activity.RESULT_OK){
+                if (resultCode == Activity.RESULT_OK) {
                     //  获取返回的联系人的Uri信息
                     Uri contactDataUri = data.getData();
-                    Cursor cursor = getContentResolver().query(contactDataUri,null,null,null,null);
-                    if(cursor.moveToFirst()){
+                    Cursor cursor = getContentResolver().query(contactDataUri, null, null, null, null);
+                    if (cursor.moveToFirst()) {
                         //   获得联系人记录的ID
                         String contactId = cursor.getString(cursor.getColumnIndex(
                                 ContactsContract.Contacts._ID));
@@ -202,9 +225,9 @@ public class MainActivity extends BaseActivity {
                                 ContactsContract.Contacts.DISPLAY_NAME));
                         String phoneNumber = "未找到联系人号码";
                         Cursor phoneCursor = getContentResolver().query(ContactsContract.CommonDataKinds.
-                                Phone.CONTENT_URI,null,ContactsContract.CommonDataKinds.
-                                Phone.CONTACT_ID+"="+"?",new String[]{contactId},null);
-                        if(phoneCursor.moveToFirst()){
+                                Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.
+                                Phone.CONTACT_ID + "=" + "?", new String[]{contactId}, null);
+                        if (phoneCursor.moveToFirst()) {
                             phoneNumber = phoneCursor.getString(phoneCursor.getColumnIndex(
                                     ContactsContract.CommonDataKinds.Phone.NUMBER));
                         }

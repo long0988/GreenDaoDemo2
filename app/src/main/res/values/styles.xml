@@ -20,6 +20,7 @@
         <!--<item name="actionOverflowButtonStyle">@style/OverFlowStyle</item>-->
         <!--<item name="android:actionOverflowButtonStyle">@style/OverFlowStyle</item>-->
         <item name="actionSheetStyle">@style/ActionSheetStyleiOS7</item>
+        <item name="android:listDivider">@drawable/divider</item>
     </style>
 
     <style name="OverFlowStyle" parent="@style/Widget.AppCompat.Light.ActionButton.Overflow">
